@@ -18,11 +18,11 @@ Here you will find some instructions to get you a copy of the project up and run
 
 These projects are included in the solution:
 
-* **Chatroom.App** (web): The web application for chatroom. It is configured to authenticate through the Identityserver. (Will be deployed at http://localhost:5002)
-* **Chatroom.Bot** (web api): Separate API that exposes a method that will internally get the Stock data by internally calling Stooq API. This API also authenticates through IdentityServer. (Will be deployed at http://localhost:5000)
+* **Chatroom.App** (web): The web application for chatroom. It is configured to authenticate through the Identityserver. (Will be deployed at https://localhost:5002)
+* **Chatroom.Bot** (web api): Separate API that exposes a method that will internally get the Stock data by internally calling Stooq API. This API also authenticates through IdentityServer. (Will be deployed at https://localhost:5000)
 * **Chatroom.Core** (library): Core classes.
 * **Chatroom.Tests** (test): Unit tests of the classes.
-* **IdentityServerAspNetIdentity** (web): External authentication server. Users are created on a Internal SQLLite database (AspIdUsers.db). You can download https://sqlitestudio.pl/ to check data inside the database. (Will be deployed at http://localhost:5001)
+* **IdentityServerAspNetIdentity** (web): External authentication server. Users are created on a Internal SQLLite database (AspIdUsers.db). You can download https://sqlitestudio.pl/ to check data inside the database. (Will be deployed at https://localhost:5001)
 
 ## Installation, Configuration and Deployment
 
@@ -63,7 +63,7 @@ To deploy the application you can do one of the following:
 * [Stooq.com](https://stooq.com) - Stock quotes service
 
 ## Usage - Flow
-* Once the 3 hosts are running you can go to the Chat app (http://localhost:5002). 
+* Once the 3 hosts are running you can go to the Chat app (https://localhost:5002). 
 * The home page does not require authentication so you will be prompt with the Chatroom app home page.
 * If you try to access to Chat section, you will be redirected to Identity Server for proper user authentication. You can use one of the following default users created:
 >* bob - Pass123$
