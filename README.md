@@ -43,7 +43,7 @@ To deploy the application you can do one of the following:
 ## Technologies and frameworks
 
 * [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-3.1identity ) - Used for the MVC application (adding MVC middleware) and for the Web API for Stock quotes
-* [Identity Server] (https://identityserver.io/) - Identity management, authorization, and API security. 
+* [Identity Server](https://identityserver.io/) - Identity management, authorization, and API security. 
 * [CsvHelper](https://joshclose.github.io/CsvHelper/) - CVS processing library
 * [SignalR](https://docs.microsoft.com/en-us/aspnet/core/signalr/introduction?view=aspnetcore-3.1) - Added to MVC application as a middleware to handle asynchrounous notifications
 
