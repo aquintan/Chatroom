@@ -37,8 +37,11 @@ No special requirements for configuration. Deploy port values can be updated in 
 ## Deployment
 
 To deploy the application you can do one of the following:
-1. Start command line and  execute StartAll.bat. This script will start the 3 Hosts (IdentityServer, MVC app and Stock API)
-2. In Visual studio, set the solution to start multiple project and select: IdentityServerAspNetIdentity, Chatroom.App and Chatroom.Bot
+* Start command line and  execute StartAll.bat. This script will start the 3 Hosts (IdentityServer, MVC app and Stock API)
+
+-- or --
+
+* In Visual studio, set the solution to start multiple project and select: IdentityServerAspNetIdentity, Chatroom.App and Chatroom.Bot
 
 ## Technologies and frameworks
 
