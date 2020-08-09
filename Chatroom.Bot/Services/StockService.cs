@@ -26,27 +26,35 @@ namespace Chatroom.Bot.Services
 
         public async Task<string> GetStockData(string name)
         {
-            var url = $"?s={name}&f=sd2t2ohlcv&h&e=csv";
-            var responseString = await _httpClient.GetStringAsync(url);
-            var sq = ProcessData(responseString);
             var quoteMessage = String.Empty;
 
-            if (sq.Count == 0)
+            try
             {
-                quoteMessage = $"No data provided for stock code {name}";
-            }
-            else
-            {
-                var record = sq[0];
+                var url = $"?s={name}&f=sd2t2ohlcv&h&e=csv";
+                var responseString = await _httpClient.GetStringAsync(url);
+                var sq = ProcessData(responseString);
 
-                if (record.Close.Equals("N/D"))
+                if (sq.Count == 0)
                 {
-                    quoteMessage = $"{name} is not a valid Stock Code.";
+                    quoteMessage = $"No data provided for stock code {name}";
                 }
                 else
                 {
-                    quoteMessage = $"{name} quote is {record.Close} $ per share";
+                    var record = sq[0];
+
+                    if (record.Close.Equals("N/D"))
+                    {
+                        quoteMessage = $"{name} is not a valid Stock Code.";
+                    }
+                    else
+                    {
+                        quoteMessage = $"{name} quote is {record.Close} $ per share";
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                quoteMessage = $"Stock data could not be retrieved for code {name}. Try again later";
             }
 
             return quoteMessage;

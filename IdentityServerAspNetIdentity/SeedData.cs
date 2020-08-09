@@ -100,6 +100,72 @@ namespace IdentityServerAspNetIdentity
                     {
                         Log.Debug("bob already exists");
                     }
+
+                    var patrick = userMgr.FindByNameAsync("patrick").Result;
+                    if (patrick == null)
+                    {
+                        patrick = new ApplicationUser
+                        {
+                            UserName = "patrick",
+                            Email = "PatrickCooper@email.com",
+                            EmailConfirmed = true
+                        };
+                        var result = userMgr.CreateAsync(patrick, "Pass123$").Result;
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
+                        }
+
+                        result = userMgr.AddClaimsAsync(patrick, new Claim[]{
+                            new Claim(JwtClaimTypes.Name, "Patrick Cooper"),
+                            new Claim(JwtClaimTypes.GivenName, "Patrick"),
+                            new Claim(JwtClaimTypes.FamilyName, "Cooper"),
+                            new Claim(JwtClaimTypes.WebSite, "http://patrickcooper.com"),
+                            new Claim("location", "somewhere")
+                        }).Result;
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
+                        }
+                        Log.Debug("patrick created");
+                    }
+                    else
+                    {
+                        Log.Debug("patrick already exists");
+                    }
+
+                    var john = userMgr.FindByNameAsync("john").Result;
+                    if (john == null)
+                    {
+                        john = new ApplicationUser
+                        {
+                            UserName = "john",
+                            Email = "johnwick@email.com",
+                            EmailConfirmed = true
+                        };
+                        var result = userMgr.CreateAsync(john, "Pass123$").Result;
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
+                        }
+
+                        result = userMgr.AddClaimsAsync(patrick, new Claim[]{
+                            new Claim(JwtClaimTypes.Name, "John Wick"),
+                            new Claim(JwtClaimTypes.GivenName, "John"),
+                            new Claim(JwtClaimTypes.FamilyName, "Wick"),
+                            new Claim(JwtClaimTypes.WebSite, "http://johnwick.com"),
+                            new Claim("location", "somewhere")
+                        }).Result;
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
+                        }
+                        Log.Debug("john created");
+                    }
+                    else
+                    {
+                        Log.Debug("john already exists");
+                    }
                 }
             }
         }

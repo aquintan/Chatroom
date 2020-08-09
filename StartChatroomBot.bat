@@ -1,0 +1,1 @@
+dotnet run --project "Chatroom.Bot/Chatroom.Bot.csproj"
