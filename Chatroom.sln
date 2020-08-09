@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServerAspNetIdentity", "IdentityServerAspNetIdentity\IdentityServerAspNetIdentity.csproj", "{9316FCAC-F492-4A1B-B753-36789E372618}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chatroom.App", "MVCClient\Chatroom.App.csproj", "{7A32FB5B-3EAF-4CB5-B67E-E7863D11CDB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chatroom.Bot", "Chatroom.Bot\Chatroom.Bot.csproj", "{1690AA90-ACF3-4682-BD2A-DCF2BFD0C1EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chatroom.Core", "Chatroom.Core\Chatroom.Core.csproj", "{01839041-DC36-4801-8BBC-75D25442B5F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9316FCAC-F492-4A1B-B753-36789E372618}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9316FCAC-F492-4A1B-B753-36789E372618}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9316FCAC-F492-4A1B-B753-36789E372618}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9316FCAC-F492-4A1B-B753-36789E372618}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A32FB5B-3EAF-4CB5-B67E-E7863D11CDB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A32FB5B-3EAF-4CB5-B67E-E7863D11CDB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A32FB5B-3EAF-4CB5-B67E-E7863D11CDB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A32FB5B-3EAF-4CB5-B67E-E7863D11CDB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1690AA90-ACF3-4682-BD2A-DCF2BFD0C1EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1690AA90-ACF3-4682-BD2A-DCF2BFD0C1EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1690AA90-ACF3-4682-BD2A-DCF2BFD0C1EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1690AA90-ACF3-4682-BD2A-DCF2BFD0C1EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01839041-DC36-4801-8BBC-75D25442B5F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01839041-DC36-4801-8BBC-75D25442B5F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01839041-DC36-4801-8BBC-75D25442B5F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01839041-DC36-4801-8BBC-75D25442B5F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {79A955A7-52A5-4538-9CAE-3732A578F621}
+	EndGlobalSection
+EndGlobal
