@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.SignalR;
-using System.Threading.Tasks;
-using Chatroom.App.Contracts;
+﻿using Chatroom.App.Contracts;
 using Chatroom.App.Models;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.SignalR;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Chatroom.App.Services
 {
@@ -18,7 +16,7 @@ namespace Chatroom.App.Services
         /// <summary>
         /// The messages cache
         /// </summary>
-        static readonly List<Message> Cache = new List<Message>();
+        private static readonly List<Message> Cache = new List<Message>();
 
         public SignalRService(IMessageProcessorService messageProcessor, IBotService botService)
         {
@@ -31,9 +29,6 @@ namespace Chatroom.App.Services
         /// </summary>
         public async Task<List<Message>> Connected()
         {
-            var userId = Context.ConnectionId;
-            var onlineClient = Clients.Client(userId);
-
             return Cache;
         }
 
@@ -45,17 +40,12 @@ namespace Chatroom.App.Services
             if (messageType == MessageType.Command)
             {
                 var command = _messageProcessor.GetStockFromCommand(message);
-                var stockInfo = await _botService.GetData(command);
-
                 var userId = Context.ConnectionId;
-                var onlineClient = Clients.Client(userId);
-
-                await onlineClient.SendAsync("ReceiveMessageFromServer", user, stockInfo, messageType.ToString(), time);
+                await _botService.GetData(userId, command);
             }
             else
             {
                 // This is a message for the audience
-
                 // Add new message to the cache
                 Cache.Add(new Message { Owner = user, TextMessage = message, Time = time });
 
@@ -64,6 +54,7 @@ namespace Chatroom.App.Services
                 {
                     Cache.RemoveAt(0);
                 }
+
                 await Clients.All.SendAsync("ReceiveMessageFromServer", user, message, messageType.ToString(), time);
             }
         }

@@ -16,9 +16,9 @@ namespace Chatroom.App.Services
             _httpClient = httpClient;
         }
 
-        public async Task<string> GetData(string command)
+        public async Task<string> GetData(string user, string command)
         {
-            var responseString = await _httpClient.GetStringAsync($"/api/Stock?stockName={command}");
+            var responseString = await _httpClient.GetStringAsync($"/api/Stock?user={user}&stockName={command}");
 
             return responseString;
         }

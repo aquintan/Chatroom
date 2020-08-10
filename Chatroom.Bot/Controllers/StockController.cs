@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using Chatroom.Core.Interfaces;
+using Chatroom.Core.Models;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Chatroom.Bot.Controllers
 {
@@ -13,21 +16,33 @@ namespace Chatroom.Bot.Controllers
     public class StockController : ControllerBase
     {
         private readonly ILogger<StockController> _logger;
-        private readonly IStockService _service;
 
-        public StockController(IStockService service, ILogger<StockController> logger)
+        public StockController(ILogger<StockController> logger)
         {
             _logger = logger;
-            _service = service;
         }
 
         [HttpGet]
-        public async Task<string> Get(string stockName)
+        public IActionResult Get(string user, string stockName, [FromServices] IServiceScopeFactory serviceScopeFactory)
         {
             _logger.LogDebug("Getting Stock info", stockName);
-            var result = await _service.GetStockData(stockName);
 
-            return result;
+            _ = Task.Run(async () =>
+            {
+                using (var scope = serviceScopeFactory.CreateScope())
+                {
+                    var service = scope.ServiceProvider.GetRequiredService<IStockService>();
+                    var mqService = scope.ServiceProvider.GetRequiredService<IStockMessageSender>();
+                    var result = await service.GetStockData(stockName);
+                    mqService.SendStockMessage(new StockMessage()
+                    {
+                        User = user,
+                        Message = result
+                    });
+                }
+            });
+
+            return Accepted();
         }
     }
 }

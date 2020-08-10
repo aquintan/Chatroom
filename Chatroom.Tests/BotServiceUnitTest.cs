@@ -17,7 +17,7 @@ namespace Chatroom.Tests
         {
         }
 
-        [TestCase("AAPL.US quote is 444.45 $ per share", "AAPL.US quote is 444.45 $ per share")]
+        [TestCase("AAPL.US quote is 444.45 $ per share", "")]
         public async Task StockServiceTest(string input, string expectedResult)
         {
             var handlerMock = new Mock<HttpMessageHandler>(MockBehavior.Strict);
@@ -32,8 +32,7 @@ namespace Chatroom.Tests
                 // prepare the expected response of the mocked http call
                 .ReturnsAsync(new HttpResponseMessage()
                 {
-                    StatusCode = HttpStatusCode.OK,
-                    Content = new StringContent(input),
+                    StatusCode = HttpStatusCode.Accepted
                 })
                 .Verifiable();
 
@@ -43,7 +42,7 @@ namespace Chatroom.Tests
             };
 
             var service = new BotService(httpClient);
-            var response = await service.GetData(input);
+            var response = await service.GetData(String.Empty, input);
 
             Assert.IsTrue(response == expectedResult);
         }

@@ -9,6 +9,7 @@ using Polly.Extensions.Http;
 
 namespace Chatroom.App.Infrastructure.Installers
 {
+    using Core.Options;
     using Contracts;
     using Configs;
     using Handlers;
@@ -21,6 +22,8 @@ namespace Chatroom.App.Infrastructure.Installers
         {
             var policyConfigs = new HttpClientPolicyConfiguration();
             config.Bind("HttpClientPolicies", policyConfigs);
+
+            services.Configure<RabbitMqConfiguration>(config.GetSection("RabbitMq"));
 
             var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(TimeSpan.FromSeconds(policyConfigs.RetryTimeoutInSeconds));
 
@@ -64,6 +67,8 @@ namespace Chatroom.App.Infrastructure.Installers
                 var factory = r.GetRequiredService<IHttpClientFactory>();
                 return new DiscoveryCache(config["ApiResourceBaseUrls:AuthServer"], () => factory.CreateClient());
             });
+
+            services.AddSingleton<IRabbitMQService, RabbitMQService>();
         }
     }
 }

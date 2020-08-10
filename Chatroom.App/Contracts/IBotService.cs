@@ -7,6 +7,6 @@ namespace Chatroom.App.Contracts
 {
     public interface IBotService
     {
-        Task<string> GetData(string command);
+        Task<string> GetData(string user, string command);
     }
 }
