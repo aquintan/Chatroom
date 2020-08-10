@@ -28,7 +28,17 @@ These projects are included in the solution:
 
 ### Prerequisites
 
-In order to get the application running, you need to have installed dot net core version 3.0. Once installed you can go to the folder and execute the StartAll.bat
+In order to get the application running, you need to have:
+**dot net core** (version 3.0)
+**RabbitMq Server** Messaging server used by the bot to notify messages (required for both Bot and MVC application)
+I suggest to use docker. You can have your RabbitMQ server running executing the following commands
+```
+docker pull rabbitmq:3-management
+```
+```
+docker run --rm -it --hostname my-rabbit -p 15672:15672 -p 5672:5672 rabbitmq:3-management
+```
+Both Bot and MVC application requires access to RabbitMQ, if Host and user access data needs to be changed, you can do it through **appsettings.json** on each of the projects.
 
 ### Configuration
 
@@ -37,6 +47,7 @@ No special requirements for configuration. Deploy port values can be updated in 
 ## Deployment
 
 To deploy the application you can do one of the following:
+* Start RabbitMQ server
 * Start command line, go to solution folder and execute the scripts: StartChatroomApp.bat, StartChatroomBot.bat and StartIdentityServer.bat. These scripts will start the 3 Hosts: MVC app, Stock API and IdentityServer respectively.
 
 -- or --
@@ -44,11 +55,11 @@ To deploy the application you can do one of the following:
 * In Visual studio, set the solution to start multiple project and select: IdentityServerAspNetIdentity, Chatroom.App and Chatroom.Bot
 
 ## Technologies and frameworks
-
 * [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-3.1identity ) - Used for the MVC application (adding MVC middleware) and for the Web API for Stock quotes
 * [Identity Server](https://identityserver.io/) - Identity management, authorization, and API security. 
 * [CsvHelper](https://joshclose.github.io/CsvHelper/) - CVS processing library
 * [SignalR](https://docs.microsoft.com/en-us/aspnet/core/signalr/introduction?view=aspnetcore-3.1) - Added to MVC application as a middleware to handle asynchrounous notifications
+* [RabbitMQ](https://www.rabbitmq.com/) - The message broker
 
 ## Known limitations and improvement options
 
