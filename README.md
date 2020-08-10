@@ -61,16 +61,13 @@ To deploy the application you can do one of the following:
 * [SignalR](https://docs.microsoft.com/en-us/aspnet/core/signalr/introduction?view=aspnetcore-3.1) - Added to MVC application as a middleware to handle asynchrounous notifications
 * [RabbitMQ](https://www.rabbitmq.com/) - The message broker
 
-## Known limitations and improvement options
-
+## Possible Improvements
 * Improve UI. Maybe adding some features like show Connected users.
-* Add unit tests to improve coverage closer to 100%
+* Add more unit tests to improve coverage.
 * SignalR framework is based on WebSockets which allows a limited number of concurrent connections.  For escalability, Azure SignalR service can be used.
-* Automate UI tests using selenium framework
-* Include Unit Tests for Javascript files
+* Include Unit Tests for Javascript files.
 
-## External resources
-
+## Links
 * [Stooq.com](https://stooq.com) - Stock quotes service
 
 ## Usage - Flow
