@@ -83,6 +83,10 @@ To deploy the application you can do one of the following:
 >* john - Pass123$
 * Once succesfully authenticated, you will be redirected to the application and will be able to access the Chat section.
 * Enter the chat section and start sharing messages
+* You can use the following stock command codes in the chat to get data from the Bot
+>* /stock=nflx.us
+>* /stock=aapl.us
+>* /stock=amzn.us
 
 ## Author
 
