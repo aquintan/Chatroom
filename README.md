@@ -61,7 +61,8 @@ To deploy the application you can do one of the following:
 * [SignalR](https://docs.microsoft.com/en-us/aspnet/core/signalr/introduction?view=aspnetcore-3.1) - Added to MVC application as a middleware to handle asynchrounous notifications
 * [RabbitMQ](https://www.rabbitmq.com/) - The message broker
 
-## Possible Improvements
+## Improvements
+* Implement federated Login with Google/Facebook. This is supported by Identity server and in the login screen you can see there is a link for Google auth (which is not implemented and was leave it just to show the capabilities of Identity server)
 * Improve UI. Maybe adding some features like show Connected users.
 * Add more unit tests to improve coverage.
 * SignalR framework is based on WebSockets which allows a limited number of concurrent connections.  For escalability, Azure SignalR service can be used.
